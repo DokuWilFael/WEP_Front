@@ -1,26 +1,30 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+
+import {Provider} from "react-redux";
+import configureStore from "./reducers/configureStore.js";
+
+import {ApiConfig} from "./config.js";
+
+import ConnectPage from "./components/ConnectPage.js";
+
+const store = configureStore();
 
 class App extends Component {
   render() {
     return (
+      <Provider store={store}>
+
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+          <h1>Week-end Planifier</h1>
         </header>
+        <div>
+        <ConnectPage />
+        </div>
       </div>
+
+      </Provider>
     );
   }
 }
