@@ -6,7 +6,7 @@ import configureStore from "./reducers/configureStore.js";
 
 import {ApiConfig} from "./config.js";
 
-import ConnectPage from "./components/ConnectPage.js";
+import ConnexionManager from "./components/ConnexionManager.js";
 
 const store = configureStore();
 
@@ -20,7 +20,7 @@ class App extends Component {
           <h1>Week-end Planifier</h1>
         </header>
         <div>
-        <ConnectPage />
+        <ConnexionManager />
         </div>
       </div>
 

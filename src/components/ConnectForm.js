@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import { connectUser } from '../actions/actions.js';
 
-class ConnectPage extends Component{
+class ConnectForm extends Component{
   constructor(props){
     super(props);
     
@@ -32,6 +32,7 @@ class ConnectPage extends Component{
 
   handleSubmit(e){
     e.preventDefault();
+    //TODO data transfert from base
     this.props.connectUser(this.state.user);
   }
 }
@@ -50,4 +51,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-) (ConnectPage);
+) (ConnectForm);
