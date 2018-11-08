@@ -19,8 +19,11 @@ class App extends Component {
         <header className="App-header">
           <h1>Week-end Planifier</h1>
         </header>
-        <div>
-        <ConnexionManager />
+        <div className="ConnexionManager">
+          <ConnexionManager />
+        </div>
+        <div className="BigBody">
+          bla
         </div>
       </div>
 

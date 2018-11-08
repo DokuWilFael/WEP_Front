@@ -32,6 +32,7 @@ class ConnectForm extends Component{
 
   handleSubmit(e){
     e.preventDefault();
+    console.log(e);
     //TODO data transfert from base
     this.props.connectUser(this.state.user);
   }

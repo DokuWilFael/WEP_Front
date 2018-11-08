@@ -1,3 +1,22 @@
+## What is this ?
+
+This project is a front-end created in ReactJs with Redux.
+It uses [this](https://github.com/PosnicAntoine/WEP) API to
+provide a basic week-end planifier service.
+
+When connected, users can browse location and events and hopefully find
+something they want to do.
+
+##Initial settings
+
+To permit the use of a personal server, the config.js file in src
+contains the URL and port where the API should be localized.
+
+Before deploying in production, you want to verify that those values
+are correct for you (and change them if necessary).
+
+## Auto-generated Documentation
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -36,9 +55,3 @@ If you aren’t satisfied with the build tool and configuration choices, you can
 Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
