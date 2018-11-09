@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import { connectUser, connectUserId } from '../actions/actions.js';
 
-import { get, getAllUser, activityHello } from './RequestManager.js';
+import { getUser, getAllUser, updateUser } from './RequestManager.js';
 
 class ConnectForm extends Component{
   constructor(props){
@@ -35,9 +35,10 @@ class ConnectForm extends Component{
 
   handleSubmit(e){
     e.preventDefault();
-    activityHello().then(
+    updateUser(19,"toto",[]).then(
       data => {
         console.log(data);
+        getAllUser().then(data => {console.log(data);});
         this.props.connectUser(this.state.user);
         this.props.connectUserId(this.state.userId);
       }

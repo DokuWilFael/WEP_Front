@@ -26,17 +26,34 @@ export function userHello(){
     .catch(error => {console.log(error);})
 }
 
+export function createUser(name, addrs){
+  return axios.post(fullUserUrl+"/create",
+      {name: name, addrs: addrs}
+    )
+  .then( res => {console.log(res.data);})
+  .catch(error => {console.log(error);})
+}
+
+export function updateUser(id, name, addrs){
+  return axios.post(fullUserUrl+"/update",
+      {params: {id: id}, name: name, addrs: addrs}
+    )
+  .then( res => {console.log(res.data);})
+  .catch(error => {console.log(error);})
+}
+
 export function getUser(userId){
   return axios.get(fullUserUrl+"/getUser",{
       params: {id: userId}
     })
   .then( res => {return res.data;})
+  .catch(error => {console.log(error);})
 }
 
 export function getAllUser(){
   return axios.get(fullUserUrl+"/getAllUser")
     .then( res => {return res.data;})
-    .catch( error => {console.log(error);})
+    .catch(error => {console.log(error);})
 }
 
 //ADDRESS API
