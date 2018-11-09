@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 
-import { connectUser } from '../actions/actions.js';
+import { connectUser, connectUserId } from '../actions/actions.js';
+
+import { get, getAllUser, activityHello } from './RequestManager.js';
 
 class ConnectForm extends Component{
   constructor(props){
@@ -10,6 +12,7 @@ class ConnectForm extends Component{
     
     this.state={
       user: '',
+      userId: 3
     };
 
     this.handleUserChange = this.handleUserChange.bind(this);
@@ -32,20 +35,26 @@ class ConnectForm extends Component{
 
   handleSubmit(e){
     e.preventDefault();
-    console.log(e);
-    //TODO data transfert from base
-    this.props.connectUser(this.state.user);
+    activityHello().then(
+      data => {
+        console.log(data);
+        this.props.connectUser(this.state.user);
+        this.props.connectUserId(this.state.userId);
+      }
+    );
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    user : state.user
+    user : state.user,
+    userId : state.userId
   }
 }
 const mapDispatchToProps = (dispatch) => {
   return {
     connectUser : (value) => {dispatch(connectUser(value))},
+    connectUserId : (value) => {dispatch(connectUserId(value))},
   }
 }
 

@@ -4,13 +4,12 @@ import './App.css';
 import {Provider} from "react-redux";
 import configureStore from "./reducers/configureStore.js";
 
-import {ApiConfig} from "./config.js";
-
 import ConnexionManager from "./components/ConnexionManager.js";
 
 const store = configureStore();
 
 class App extends Component {
+
   render() {
     return (
       <Provider store={store}>
@@ -23,7 +22,7 @@ class App extends Component {
           <ConnexionManager />
         </div>
         <div className="BigBody">
-          bla
+
         </div>
       </div>
 
