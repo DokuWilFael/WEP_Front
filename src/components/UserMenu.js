@@ -2,10 +2,15 @@ import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 
+import { handleBodyStateChange } from '../actions/actions.js';
+
 //This class render the top left button
 class UserMenu extends Component{
+
   constructor(props){
     super(props);
+    this.handleClick=this.handleClick(this);
+     
   }
 
   render(){
@@ -21,16 +26,30 @@ class UserMenu extends Component{
     }else{
       //our corner menu
       return(<div className="TopCorner">
-             {this.manageGeneral(this.props.general)}
+             {this.manageBodyState(this.props.bodyState)}
              </div>);
     }
   }
 
-  manageGeneral(general){
-    if(general){
-      return(<p>GENERAL</p>);
+  manageBodyState(bodyState){
+    if(bodyState==="MAIN_HUB"){
+      return(<form onSubmit={this.handleClick}>
+               <input type='submit' value='YOUR WEEK-END' />
+             </form>);
+    }else if(bodyState==="USER_WEEK_END"){
+      return(<form onSubmit={this.handleClick}>
+               <input type='submit' value='MAIN_HUB' />
+             </form>);
     }else{
-      return(<p>YOUR WEEK-ENDS</p>);
+      return(<div></div>);
+    }
+  }
+
+  handleClick(e){
+    if(this.props.bodyState==="MAIN_HUB"){
+      this.props.handleBodyStateChange("USER_WEEK_END");
+    }else if(this.props.bodyState==="USER_WEEK_END"){
+      this.props.handleBodyStateChange("MAIN_HUB");
     }
   }
 }
@@ -38,12 +57,13 @@ class UserMenu extends Component{
 const mapStateToProps = (state) => {
   return {
     connected: state.connected,
-    general: state.general
+    bodyState: state.bodyState
   }
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-
+    handleBodyStateChange: (value) =>
+ {dispatch(handleBodyStateChange(value))},
   }
 }
 

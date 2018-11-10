@@ -17,3 +17,7 @@ export const handleConnected = (connected) => {
 export const handleCityFetch = (citys) => {
   return {type: "CITY_FETCH", citys:citys};
 }
+
+export const handleBodyStateChange = (bodyState) => {
+  return {type: "BODY_STATE_CHANGE", bodyState:bodyState};
+}

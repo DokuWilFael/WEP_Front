@@ -6,17 +6,26 @@ export class User{
   }
 }
 
+export function createUs(user){
+  return new User(user.name,[]);
+}
+
 export class Address{
   constructor(type,country,city,cityNumber,street,streetNumber,complement){
     this.type=type;
     this.country=country;
     this.city=city;
-    this.cityNumber=cityNumber;
+    this.cityNumber=cityNumber.toString();
     this.street=street;
-    this.streetNumber=streetNumber;
+    this.streetNumber=streetNumber.toString();
     this.complement=complement;
   }
 }
+
+export function createAddr(addr){
+    return new Address(addr.type,addr.country,addr.city,addr.cityNumber,
+    addr.street,addr.streetNumber,addr.complement);
+  }
 
 export class Activity{
   constructor(name, description, addrs){
@@ -26,8 +35,14 @@ export class Activity{
   }
 }
 
+//clone without address
+export function createAct(activity){
+    return new Activity(activity.name,activity.description,
+               []);
+  }
+
 //bad, hardcoded super user because naive programming is easy
-export const adminname = "THE_ALL_POWERFULL_ADMIN";
+export const adminName = "THE_ALL_POWERFULL_ADMIN";
 
 //find a user by name in a list of user
 //return id or -1 if not found

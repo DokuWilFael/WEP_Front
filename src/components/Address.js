@@ -1,24 +1,22 @@
 import React, { Component } from 'react';
 
-import { connect } from 'react-redux';
-
 //This class render an address as a table cell
-class Address extends Component{
-
-}
-
-const mapStateToProps = (state) => {
-  return {
-    
+export class Address extends Component{
+  render(){
+    const address = this.props.address;
+    return(
+      <tr>
+        <td>
+        <p>
+          {address.type}
+        </p>
+        <ul>
+          <li>{address.city+", "+address.country}</li>
+          <li>{address.streetNumber + ", "+address.street}</li>
+          <li>{address.complement}</li>
+        </ul>
+        </td>
+      </tr>
+    )
   }
 }
-const mapDispatchToProps = (dispatch) => {
-  return {
-
-  }
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-) (Address);

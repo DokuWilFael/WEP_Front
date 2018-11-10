@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 
+import AddActivity from './AddActivity.js';
+
 //This class manage the display of the body
 //depending of the connected state
 class BodyManager extends Component{
@@ -21,7 +23,7 @@ class BodyManager extends Component{
   manageConnexion(connected){
     if(connected){
       //Our interface here
-      return(<div>TODO STUFF</div>);
+      return(<div><AddActivity /></div>);
     }
     else{
       //Some promotionnal material

@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-import {ApiConfig} from "../config.js";
+import {ApiConfig} from '../config.js';
+
+import { createUs, createAddr, createAct } from './Utils.js';
 
 const baseUrl = "http://"+ApiConfig.server+":"+ApiConfig.port;
 console.log(baseUrl);
@@ -69,6 +71,15 @@ export function getAllUser(){
     .catch(error => {console.log(error);})
 }
 
+export function getUserId(user){
+  return getAllUser().then( data =>{
+    var i;
+    for(i=0;i<data.length;i++){
+      if(user.name===data[i].name){return data[i].id;}
+    }
+  });
+}
+
 //ADDRESS API
 const fullAddressUrl = baseUrl+addressUrl;
 
@@ -114,6 +125,16 @@ export function getAllAddress(){
   return axios.get(fullAddressUrl+"/getAllAddress")
     .then( res => {return res.data;})
     .catch(error => {console.log(error);})
+}
+
+export function getAddressId(address){
+  return getAllAddress().then(data =>{
+    var i;
+    for(i=0;i<data.length;i++){
+      var addr = JSON.stringify(createAddr(data[i]));
+      if(addr === JSON.stringify(address)){return data[i].id;}
+    }
+  });
 }
 
 
@@ -162,4 +183,21 @@ export function getAllActivity(){
   return axios.get(fullActivityUrl+"/getAllActivity")
     .then( res => {return res.data;})
     .catch(error => {console.log(error);})
+}
+
+export function getActivityId(activity){
+  return getAllActivity().then(data =>{
+    var i;
+    for(i=0;i<data.length;i++){
+      var addr = JSON.stringify(createAct(data[i]));
+      if(addr === JSON.stringify(activity)){return data[i].id;}
+    }
+  });
+}
+
+export function activityAddAddress(idAct,idAddr){
+  return axios.post(fullActivityUrl+"/addAddress?id="+idAct+"&idAddress="+idAddr,{}
+    )
+  .then( res => {console.log(res.data);})
+  .catch(error => {console.log(error);})
 }

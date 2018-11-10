@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 
-import { connectUser, connectUserId, handleConnected }
+import { connectUser, connectUserId, handleConnected,
+handleBodyStateChange }
   from '../actions/actions.js';
 
 import { getAllUser } from './RequestManager.js';
 
-import { findUser } from './Utils.js';
+import { findUser, adminName } from './Utils.js';
 
 class ConnectForm extends Component{
   constructor(props){
@@ -46,6 +47,11 @@ class ConnectForm extends Component{
           this.props.connectUser(this.state.user);
           this.props.handleConnected(true);
           this.props.connectUserId(id);
+          if(this.state.user===adminName){
+            this.props.handleBodyStateChange("ADMIN_PANEL");
+          }else{
+            this.props.handleBodyStateChange("MAIN_HUB");
+          }
         }
       }
     );
@@ -62,7 +68,10 @@ const mapDispatchToProps = (dispatch) => {
   return {
     connectUser: (value) => {dispatch(connectUser(value))},
     connectUserId: (value) => {dispatch(connectUserId(value))},
-    handleConnected: (value) => {dispatch(handleConnected(value))}
+    handleConnected: (value) => {dispatch(handleConnected(value))},
+    handleBodyStateChange: 
+      (value) => {dispatch(handleBodyStateChange(value))},
+    
   }
 }
 

@@ -3,14 +3,25 @@ const user = "";
 const userId= -1;
 const connected = false;
 const citys = [];
+const bodyState = ""; //token representing state of main body
 
 const startingState = {
       user: user,
       userId: userId,
       connected: connected,
+      bodyState: bodyState,
 
       citys: citys
-    };
+};
+
+export function handleBodyStateChange(state=startingState.bodyState,action){
+  switch (action.type){
+    case "BODY_STATE_CHANGE":
+      return action.bodyState;
+    default:
+      return state;
+  }
+}
 
 export function userConnexion(state=startingState.user, action){
   switch (action.type){
@@ -61,6 +72,7 @@ export default function rootReducer(state = {}, action){
     userId: userIdConnexion(state.userId, action),
     connected: handleConnected(state.connected, action),
     citys: handleCityFetch(state.citys, action),
+    bodyState: handleBodyStateChange(state.bodyState, action)
     
   }
 };

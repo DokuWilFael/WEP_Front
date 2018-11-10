@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 import ConnectForm from './ConnectForm.js';
 import SignForm from './SignForm.js';
 
-import { disconnectUser } from '../actions/actions.js';
+import { disconnectUser, handleBodyStateChange } 
+  from '../actions/actions.js';
 
 //This class handle the switch between the connect/sign menu
 //and the Disconnect Menu
@@ -25,6 +26,7 @@ class ConnexionManager extends Component{
   handleSubmit(e){
     e.preventDefault();
     this.props.disconnectUser();
+    this.props.handleBodyStateChange("");
   }
 
   manageConnexion(connected){
@@ -57,6 +59,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     disconnectUser : () => {dispatch(disconnectUser())},
+    handleBodyStateChange: 
+      (value) =>{dispatch(handleBodyStateChange(value))},
   }
 }
 
