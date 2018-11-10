@@ -7,7 +7,7 @@ provide a basic week-end planifier service.
 When connected, users can browse location and events and hopefully find
 something they want to do.
 
-##Initial settings
+## Initial settings
 
 To permit the use of a personal server, the config.js file in src
 contains the URL and port where the API should be localized.
@@ -15,7 +15,7 @@ contains the URL and port where the API should be localized.
 Before deploying in production, you want to verify that those values
 are correct for you (and change them if necessary).
 
-##Tricks
+## Tricks
 This project is in pre-alpha and as still a lot of bugs.
 I will list here some weird "feature" you will have to face.
 
