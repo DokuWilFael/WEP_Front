@@ -3,24 +3,45 @@
 }
 
 .App-header {
+  display: table;
   background-color: #282c34;
   min-height: 5vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  width:100%;
 }
 
 .App-link {
   color: #61dafb;
 }
 
+.LeftHeader{
+  display: table-cell;
+  min-height: 5vh;
+  width: 25%;
+}
+
+.Title{
+  display: table-cell;
+  min-height: 5vh;
+  width: 50%;
+  vertical-align: middle;
+}
+
 .ConnexionManager {
-  float: right;
+  display: table-cell;
+  min-height: 5vh;
+  width: 25%;
 }
 
 .BigBody {
   background-color: #00FF00;
+}
+
+.TopCorner{
+  background-color: #000080;
+  font-size: calc(10px + 2vmin);
+  height: 100%;
+  width: 100%;
+  vertical-align: middle;
 }

@@ -3,9 +3,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import ConnectForm from './ConnectForm.js';
+import SignForm from './SignForm.js';
 
 import { disconnectUser } from '../actions/actions.js';
 
+//This class handle the switch between the connect/sign menu
+//and the Disconnect Menu
 class ConnexionManager extends Component{
   constructor(props){
     super(props);
@@ -13,9 +16,9 @@ class ConnexionManager extends Component{
   }
 
   render(){
-    const user = this.props.user;
+    const connected = this.props.connected;
     return(
-      this.manageConnexion(user)
+      this.manageConnexion(connected)
     );
   }
 
@@ -24,14 +27,22 @@ class ConnexionManager extends Component{
     this.props.disconnectUser();
   }
 
-  manageConnexion(user){
-    if(user===''){
-      return(<ConnectForm />);
+  manageConnexion(connected){
+    if(!connected){
+      //connect/sign menu
+      return(<div>
+               <ConnectForm /> 
+               <SignForm />
+             </div>);
     }
     else{
-      return(<form onSubmit={this.handleSubmit}>
-               <input type='submit' value='Disconnect'/>
-             </form>
+      //disconnect menu
+      return(<div>
+               {this.props.user}
+               <form onSubmit={this.handleSubmit}>
+                 <input type='submit' value='Disconnect'/>
+               </form>
+             </div>
       );
     }
   }
@@ -39,7 +50,8 @@ class ConnexionManager extends Component{
 
 const mapStateToProps = (state) => {
   return {
-    user : state.user
+    connected: state.connected,
+    user: state.user
   }
 }
 const mapDispatchToProps = (dispatch) => {

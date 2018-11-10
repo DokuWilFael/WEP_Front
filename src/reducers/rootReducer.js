@@ -1,12 +1,15 @@
 //STARTING DATA
 const user = "";
-const userId= -1; 
-const users= [];
+const userId= -1;
+const connected = false;
+const citys = [];
 
 const startingState = {
       user: user,
       userId: userId,
-      users: users,
+      connected: connected,
+
+      citys: citys
     };
 
 export function userConnexion(state=startingState.user, action){
@@ -31,10 +34,33 @@ export function userIdConnexion(state=startingState.userId, action){
   }
 }
 
+export function handleConnected(state=startingState.connected, action){
+  switch (action.type){
+    case "CONNECT":
+      return action.connected;
+    case "DISCONNECT":
+      return false;
+    default:
+      return state;
+  }
+}
+
+export function handleCityFetch(state=startingState.citys,action){
+  switch (action.type){
+    case "CITY_FETCH":
+      return action.citys;
+    default:
+      return state;
+  }
+}
+
 
 export default function rootReducer(state = {}, action){
   return {
     user: userConnexion(state.user, action),
-    userId: userIdConnexion(state.userId, action)
+    userId: userIdConnexion(state.userId, action),
+    connected: handleConnected(state.connected, action),
+    citys: handleCityFetch(state.citys, action),
+    
   }
 };

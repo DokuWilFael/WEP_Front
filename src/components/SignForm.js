@@ -5,11 +5,11 @@ import { connect } from 'react-redux';
 import { connectUser, connectUserId, handleConnected }
   from '../actions/actions.js';
 
-import { getAllUser } from './RequestManager.js';
+import { getAllUser, createUser } from './RequestManager.js';
 
-import { findUser } from './Utils.js';
+import { User, findUser } from './Utils.js';
 
-class ConnectForm extends Component{
+class SignForm extends Component{
   constructor(props){
     super(props);
     
@@ -26,7 +26,7 @@ class ConnectForm extends Component{
       <form onSubmit={this.handleSubmit}>
         <input type="text" placeholder="Username" onChange={this.handleUserChange}>
         </input>
-        <input type='submit' value='Connect' />
+        <input type='submit' value='Sign' />
       </form>
     );
   }
@@ -41,11 +41,15 @@ class ConnectForm extends Component{
       data => {
         var id = findUser(this.state.user,data);
         if(id===-1){
-          alert('User does not exist');
+          var newUser = new User(this.state.user,[]);
+          createUser(newUser).then( data => {
+            alert('User created! You can connect now');}
+          );
         }else{
-          this.props.connectUser(this.state.user);
-          this.props.handleConnected(true);
-          this.props.connectUserId(id);
+          alert('User already exist, please choose another name');
+          //this.props.connectUser(this.state.user);
+          //this.props.handleConnected(true);
+          //this.props.connectUserId(id);
         }
       }
     );
@@ -69,4 +73,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-) (ConnectForm);
+) (SignForm);
