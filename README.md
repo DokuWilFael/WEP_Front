@@ -15,6 +15,30 @@ contains the URL and port where the API should be localized.
 Before deploying in production, you want to verify that those values
 are correct for you (and change them if necessary).
 
+##Tricks
+This project is in pre-alpha and as still a lot of bugs.
+I will list here some weird "feature" you will have to face.
+
+- When sharing an activity, you have to click a second time on
+the button to actually link the address and the activity together.
+This is a timing bug with the api request but I didn't find a fix.
+
+- The drop down list to select city and activity are not updated when
+you add a new activity/address. You have to refresh the page for it to
+update.
+
+- Clicking the MAIN HUB/MY WEEK END button refresh the page. Another
+timing related bug...
+
+- Due to previous bug, refreshing the page will trigger the vue change
+between the main hub and my week-end vue.
+
+- I think the drop down menu in My Week-end is useless. I probably forgot
+to connect it properly.
+
+##Author
+Damien Vansteene
+
 ## Auto-generated Documentation
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
