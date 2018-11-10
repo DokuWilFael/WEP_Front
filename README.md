@@ -15,6 +15,9 @@ contains the URL and port where the API should be localized.
 Before deploying in production, you want to verify that those values
 are correct for you (and change them if necessary).
 
+If the API database is empty, you can use this website to manually add User (by creating accounts),
+activities and addresses (via de sharing menu). Be aware that it will be slow and painfull.
+
 ## Tricks
 This project is in pre-alpha and as still a lot of bugs.
 I will list here some weird "feature" you will have to face.
@@ -35,6 +38,10 @@ between the main hub and my week-end vue.
 
 - I think the drop down menu in My Week-end is useless. I probably forgot
 to connect it properly.
+
+- As of now, you cannot delete your account or your week-end plans. Maybe in a future update.
+
+- To add an activity to your week-end, click on it and a pop-up will appear.
 
 ##Author
 Damien Vansteene
