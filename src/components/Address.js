@@ -5,7 +5,6 @@ export class Address extends Component{
   render(){
     const address = this.props.address;
     return(
-      <tr>
         <td>
         <p>
           {address.type}
@@ -16,7 +15,6 @@ export class Address extends Component{
           <li>{address.complement}</li>
         </ul>
         </td>
-      </tr>
     )
   }
 }

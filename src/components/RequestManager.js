@@ -80,6 +80,13 @@ export function getUserId(user){
   });
 }
 
+export function userAddAddress(idUser,idAddr){
+  return axios.post(fullUserUrl+"/addAddress?id="+idUser+"&idAddress="+idAddr,{}
+    )
+  .then( res => {console.log(res.data);})
+  .catch(error => {console.log(error);})
+}
+
 //ADDRESS API
 const fullAddressUrl = baseUrl+addressUrl;
 

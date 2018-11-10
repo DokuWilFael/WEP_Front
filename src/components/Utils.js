@@ -66,3 +66,31 @@ export function cityList(addresses){
   }
   return cityL;
 }
+
+//generate a list of act name from act
+export function actList(acts){
+  var i;
+  var actL = [];
+  for(i=0;i<acts.length;i++){
+    var act = acts[i].name;
+    if(!actL.includes(act)){
+      actL.push(act);
+    }
+  }
+  return actL;
+}
+
+export function actIsInCity(act,city){
+  var addrL = act.addrs.filter( a => a.city === city);
+  return addrL.length >0;
+}
+
+export function addrFromActWithCity(act,city){
+  if(city === "all"){return act.addrs;}
+  return act.addrs.filter( a => a.city === city);
+}
+
+export function actHasAddr(act,addr){
+  var addrL = act.addrs.filter( a => a.id === addr.id);
+  return addrL.length >0;
+}

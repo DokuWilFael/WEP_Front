@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 
-import AddActivity from './AddActivity.js';
+import BodyContent from './BodyContent.js';
 
 //This class manage the display of the body
 //depending of the connected state
@@ -15,15 +15,10 @@ class BodyManager extends Component{
     );
   }
 
-  handleSubmit(e){
-    e.preventDefault();
-    this.props.disconnectUser();
-  }
-
   manageConnexion(connected){
     if(connected){
       //Our interface here
-      return(<div><AddActivity /></div>);
+      return(<div><BodyContent /></div>);
     }
     else{
       //Some promotionnal material

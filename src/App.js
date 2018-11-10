@@ -7,7 +7,7 @@ import configureStore from './reducers/configureStore.js';
 import ConnexionManager from './components/ConnexionManager.js';
 import BodyManager from './components/BodyManager.js';
 import UserMenu from './components/UserMenu.js';
-import CityFetch from './components/CityFetch.js';
+import InitialDataFetch from './components/InitialDataFetch.js';
 
 const store = configureStore();
 
@@ -18,7 +18,7 @@ class App extends Component {
       <Provider store={store}>
       
       <div className="App">
-        <CityFetch />
+        <InitialDataFetch />
         <header className="App-header">
           <div className="LeftHeader">
             <UserMenu />

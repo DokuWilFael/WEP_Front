@@ -97,7 +97,7 @@ class AddActivity extends Component{
           <input id="actDesc" type="text" placeholder=""
           onChange={this.actDescChange} />
 
-          <label> Address </label>
+          <label className="BigLabel"> Address </label>
           <label htmlFor="addrT"> Type </label>
           <input id="addrT" type="text" placeholder=""
           onChange={this.addrTChange} />
@@ -134,7 +134,7 @@ class AddActivity extends Component{
 
   handleSubmit(e){
     e.preventDefault();
-    this.save().then( () => {
+    this.save().then( data => {
       this.linkActAddr(this.state.activity,this.state.address);
     });
   }
